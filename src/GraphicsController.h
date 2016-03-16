@@ -7,6 +7,7 @@
 #define GRAPHICS_CONTROLLER_H_
 
 #include "GraphicsObject.h"
+#include "PhyController.h"
 
 /*
  * Main controller class for handling graphical operations.

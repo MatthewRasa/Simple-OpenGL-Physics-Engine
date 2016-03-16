@@ -80,13 +80,6 @@ void GraphicsObject::resize_perspective(double width_ratio, double height_ratio,
 		obj->resize(width_ratio, height_ratio, near, far);
 }
 
-void GraphicsObject::update_all() {
-	foreach (GraphicsObject *obj, sp_list)
-		mthread_create(&obj->m_update_thread, NULL, obj, &GraphicsObject::update);
-	foreach (GraphicsObject *obj, sp_list)
-		pthread_join(obj->m_update_thread, NULL);
-}
-
 /*
  * Constructor, add the newly-created GraphicsObject to the list.
  */
@@ -191,12 +184,5 @@ void GraphicsObject::resize(int width, int height, int near, int far) {
  * far - far bound of the object
  */
 void GraphicsObject::resize(double width_ratio, double height_ratio, int near, int far) {
-
-}
-
-/*
- * Update the object's position prior to drawing.
- */
-void GraphicsObject::update(void) {
 
 }

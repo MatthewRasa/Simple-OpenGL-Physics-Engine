@@ -48,7 +48,6 @@ void GraphicsController::init() {
 	run(0); // Run timer
 
 	glutMainLoop();
-
 }
 
 /*
@@ -56,6 +55,7 @@ void GraphicsController::init() {
  */
 void GraphicsController::destroy() {
 	GraphicsObject::destroy();
+	PhyController::destroy();
 	delete[] P_WINDOW_NAME;
 }
 
@@ -113,7 +113,7 @@ void GraphicsController::resize(int width, int height) {
  * value - required parameter for timer callback
  */
 void GraphicsController::run(int value) {
-	GraphicsObject::update_all();
+	PhyController::update_all();
 	glutPostRedisplay();
 	glutTimerFunc(17, run, 0);
 }
@@ -124,5 +124,6 @@ void GraphicsController::run(int value) {
  */
 void GraphicsController::setup(void) {
 	GraphicsObject::init();
+	PhyController::init();
 	glClearColor(1.0, 1.0, 1.0, 0.0);
 }

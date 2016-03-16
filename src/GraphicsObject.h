@@ -18,9 +18,9 @@
 #pragma comment(lib, "glew32.lib")
 #endif
 
-#include "LinkedList.h"
-#include "mthread.h"
-#include "Utils.h"
+#include "util/LinkedList.h"
+#include "util/mthread.h"
+#include "util/Utils.h"
 #include <iostream>
 
 using namespace std;
@@ -79,8 +79,6 @@ public:
 	 * far - far bound of the object
 	 */
 	static void resize_perspective(double width_ratio, double height_ratio, int near, int far);
-
-	static void update_all();
 
 	/*
 	 * Constructor, add the newly-created GraphicsObject to the list.
@@ -162,19 +160,16 @@ public:
 	 */
 	virtual void resize(double width_ratio, double height_ratio, int near, int far);
 
-	/*
-	 * Update the object's position prior to drawing.
-	 */
-	virtual void update(void);
-
 protected:
 
 	/*
+	 * m_update_thread - thread used for asynchronously updating object
 	 * m_width - width of the object
 	 * m_height - height of the object
 	 * m_near - near bound of the object
 	 * m_far - far bound of the object
 	 */
+	pthread_t m_update_thread;
 	int m_width, m_height, m_near, m_far;
 
 private:
@@ -183,11 +178,6 @@ private:
 	 * sp_list - LinkedList of instantiated GraphicsObjects
 	 */
 	static LinkedList<GraphicsObject> *sp_list;
-
-	/*
-	 * m_update_thread - thread used for asynchronously updating object
-	 */
-	pthread_t m_update_thread;
 
 };
 

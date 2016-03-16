@@ -271,10 +271,9 @@ private:
  * Macro to simulate for-each loop.
  */
 #define foreach(elem, l) \
-	if (int _cont = 1) \
-		if (typeof(l) _list = (l)) \
-			for (_list->reset(); _list->has_next(); _list->next(), _cont = !_cont) \
-				for (elem = _list->curr(); _cont; _cont = !_cont)
+	if (typeof(l) _list = (l)) \
+		for (_list->reset(); _list->has_next(); _list->next()) \
+			if (elem = _list->curr())
 
 /*
  * Macro to simulate a for-each loop that frees each element from the list.
