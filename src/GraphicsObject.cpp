@@ -167,22 +167,3 @@ void GraphicsObject::resize(int width, int height, int near, int far) {
 	m_near = near;
 	m_far = far;
 }
-
-/*
- * Resize the object using specified ratios, used for perspective projection.
- * The ratios are a factor of the specified dimension over the far bound, so that
- * the actual width and height at any value of z can be calculated like so:
- *
- *     width = width_ratio*(z_value)
- *     height = height_ratio*(z_value)
- *
- *     where near <= z_value <= far
- *
- * width_ratio - ratio of far plane width to depth
- * height_ratio - ratio of far plane height to depth
- * near - near bound of the object
- * far - far bound of the object
- */
-void GraphicsObject::resize(double width_ratio, double height_ratio, int near, int far) {
-
-}

@@ -271,28 +271,8 @@ private:
  * Macro to simulate for-each loop.
  */
 #define foreach(elem, l) \
-	if (typeof(l) _list = (l)) \
+	if (typeof(l) _list = l) \
 		for (_list->reset(); _list->has_next(); _list->next()) \
 			if (elem = _list->curr())
-
-/*
- * Macro to simulate a for-each loop that frees each element from the list.
- * Used for easily copying elements out of one list
- */
-#define forfreeeach(elem, l) \
-	if (int _cont = 1) \
-		for (typeof(l) _list = (l); _list != NULL; _list->set_delete_mode(LinkedList<typeof(l)>::FREE_DATA), delete _list, _list = NULL) \
-			for (_list->reset(); _list->has_next(); _list->next(), _cont = !_cont) \
-				for (elem = _list->curr(); _cont; _cont = !_cont)
-
-/*
- * Macro to simulate a for-each loop that deletes the original list.
- * Used for easily cleaning up lists returned from functions.
- */
-#define forrmeach(elem, l) \
-	if (int _cont = 1) \
-		for (typeof(l) _list = (l); _list != NULL; _list->set_delete_mode(LinkedList<typeof(l)>::REMOVE_DATA), delete _list, _list = NULL) \
-			for (_list->reset(); _list->has_next(); _list->next(), _cont = !_cont) \
-				for (elem = _list->curr(); _cont; _cont = !_cont)
 
 #endif

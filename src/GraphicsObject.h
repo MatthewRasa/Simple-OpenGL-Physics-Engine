@@ -158,7 +158,7 @@ public:
 	 * near - near bound of the object
 	 * far - far bound of the object
 	 */
-	virtual void resize(double width_ratio, double height_ratio, int near, int far);
+	virtual void resize(double width_ratio, double height_ratio, int near, int far)=0;
 
 protected:
 

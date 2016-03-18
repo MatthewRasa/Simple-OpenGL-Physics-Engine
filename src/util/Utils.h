@@ -7,6 +7,7 @@
 #define UTILS_H_
 
 #include <cmath>
+#include "string.h"
 
 /*
  * Class containing static utility functions.
@@ -28,6 +29,13 @@ public:
 	 * Calculate the absolute value of a double.
 	 */
 	static double abs(double value);
+
+	template<typename T>
+	static T *arrcpy(T *rp_dest, T *p_src, int length) {
+		for (int i = 0; i < length; i++)
+			rp_dest[i] = p_src[i];
+		return rp_dest;
+	}
 
 	/*
 	 * Convert an angle in radians to degrees.

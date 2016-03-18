@@ -1,8 +1,5 @@
 /*
  * PhyController.h
- *
- *  Created on: Mar 12, 2016
- *      Author: matt
  */
 #ifndef PHYCONTROLLER_H_
 #define PHYCONTROLLER_H_
